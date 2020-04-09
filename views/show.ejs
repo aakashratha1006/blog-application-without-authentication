@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Blog Page</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    </head>
+<body>
+    <div class = "ui fixed inverted menu">
+        <div class = "ui container">
+            <div class = "header item"><i class="code icon"></i>Blog Site</div>
+            <a href = "/" class = "item">Home</a>
+            <a href = "/blogs/new" class="item">New Post</a>
+        </div>
+    </div>
+    
+    <br><br><br><br><br><br>
+
+    <div class="ui main text container segment">
+        <div class ="ui huge header"> <%= blog.title %></div>
+        <div class ="ui top attached">
+            <div class ="item">
+                <img class ="ui centered rounded image" src="<%= blog.image %>">
+                <div class="content">
+                    <span> <%= blog.created.toDateString() %> </span>
+                </div>
+                <div class="description">
+                    <p><%- blog.body %> </p>
+                </div>
+                <a class="ui green basic button" href="/blogs/edit/<%= blog._id %>">Edit</a>
+                <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="ui red basic button">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
